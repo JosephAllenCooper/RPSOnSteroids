@@ -15,6 +15,23 @@ let playerTwoMoveTwoValue = undefined;
 let playerTwoMoveThreeValue = undefined;
 
 function setPlayerMoves(player, moveOneType, moveOneValue, moveTwoType, moveTwoValue, moveThreeType, moveThreeValue) {
+  if (player === undefined || moveOneType === undefined || moveOneValue === undefined || moveTwoType === undefined || moveTwoValue === undefined || moveThreeType === undefined || moveThreeValue === undefined) {
+    return;
+  }
+  if (moveOneType !== 'rock' && moveOneType !== 'paper' && moveOneType !== 'scissors'){
+    return;
+  }
+  if (moveTwoType !== 'rock' && moveTwoType !== 'paper' && moveTwoType !== 'scissors'){
+    return;
+  }
+  if (moveThreeType !== 'rock' && moveThreeType !== 'paper' && moveThreeType !== 'scissors'){
+    return;
+  }
+
+  if (moveOneValue < 0 && moveOneValue > 100 && moveTwoValue < 0 && moveTwoValue > 100 && moveThreeValue < 0 && moveThreeValue > 100 && moveOneValue + moveTwoValue + moveThreeValue > 100) {
+    return;
+  }
+
   if (player === 'Player One') {
     playerOneMoveOneType = moveOneType;
     playerOneMoveOneValue = moveOneValue;
@@ -23,12 +40,12 @@ function setPlayerMoves(player, moveOneType, moveOneValue, moveTwoType, moveTwoV
     playerOneMoveThreeType = moveThreeType;
     playerOneMoveThreeValue = moveThreeValue;
   } else if (player === 'Player Two') {
-    PlayerTwoMoveOneType = moveOneType;
-    PlayerTwoMoveOneValue = moveOneValue;
-    PlayerTwoMoveTwoType = moveTwoType;
-    PlayerTwoMoveTwoValue = moveTwoValue;
-    PlayerTwoMoveThreeType = moveThreeType;
-    PlayerTwoMoveThreeValue = moveThreeValue;
+    playerTwoMoveOneType = moveOneType;
+    playerTwoMoveOneValue = moveOneValue;
+    playerTwoMoveTwoType = moveTwoType;
+    playerTwoMoveTwoValue = moveTwoValue;
+    playerTwoMoveThreeType = moveThreeType;
+    playerTwoMoveThreeValue = moveThreeValue;
   }
 }
 
@@ -125,18 +142,18 @@ function getGameWinner() {
   let playerOneWins = '';
   let playerTwoWins = '';
 
-for (let roundNumber = 1; roundNumber <= 3; roundNumber++) {
-  let roundWinner = getRoundWinner(roundNumber)
+  for (let roundNumber = 1; roundNumber <= 3; roundNumber++) {
+    let roundWinner = getRoundWinner(roundNumber)
 
-  if (roundWinner === 'Player One') {
-    playerOneWins++;
-  } else if (roundWinner === 'Player Two') {
-    playerTwoWins++;
-  } else if (roundWinner === 'Tie') {
-    playerOneWins++;
-    playerTwoWins++;
+    if (roundWinner === 'Player One') {
+      playerOneWins++;
+    } else if (roundWinner === 'Player Two') {
+      playerTwoWins++;
+    } else if (roundWinner === 'Tie') {
+      playerOneWins++;
+      playerTwoWins++;
+    }
   }
-}
 
   if (playerOneWins === playerTwoWins) {
     return 'Tie';

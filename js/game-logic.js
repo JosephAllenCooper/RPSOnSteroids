@@ -28,7 +28,7 @@ function setPlayerMoves(player, moveOneType, moveOneValue, moveTwoType, moveTwoV
     return;
   }
 
-  if (moveOneValue < 0 && moveOneValue > 100 && moveTwoValue < 0 && moveTwoValue > 100 && moveThreeValue < 0 && moveThreeValue > 100 && moveOneValue + moveTwoValue + moveThreeValue > 100) {
+  if (moveOneValue < 0 || moveOneValue > 100 || moveTwoValue < 0 || moveTwoValue > 100 || moveThreeValue < 0 || moveThreeValue > 100 || moveOneValue + moveTwoValue + moveThreeValue > 100) {
     return;
   }
 

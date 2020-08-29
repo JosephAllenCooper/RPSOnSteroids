@@ -121,6 +121,28 @@ function getRoundWinner (roundNumber) {
   }
 }
 
-function getGameWinner(params) {
-  
+function getGameWinner() {
+  let playerOneWins = '';
+  let playerTwoWins = '';
+
+for (let roundNumber = 1; roundNumber <= 3; roundNumber++) {
+  let roundWinner = getRoundWinner(roundNumber)
+
+  if (roundWinner === 'Player One') {
+    playerOneWins++;
+  } else if (roundWinner === 'Player Two') {
+    playerTwoWins++;
+  } else if (roundWinner === 'Tie') {
+    playerOneWins++;
+    playerTwoWins++;
+  }
+}
+
+  if (playerOneWins === playerTwoWins) {
+    return 'Tie';
+  } else if (playerOneWins > playerTwoWins) {
+    return 'Player One';
+  } else if (playerOneWins < playerTwoWins) {
+    return 'Player Two';
+  }
 }

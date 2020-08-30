@@ -28,7 +28,7 @@ function setPlayerMoves(player, moveOneType, moveOneValue, moveTwoType, moveTwoV
     return;
   }
 
-  if (moveOneValue < 0 || moveOneValue > 100 || moveTwoValue < 0 || moveTwoValue > 100 || moveThreeValue < 0 || moveThreeValue > 100 || moveOneValue + moveTwoValue + moveThreeValue > 100) {
+  if (moveOneValue < 1 || moveOneValue > 99 || moveTwoValue < 1 || moveTwoValue > 99 || moveThreeValue < 1 || moveThreeValue > 99 || moveOneValue + moveTwoValue + moveThreeValue > 99) {
     return;
   }
 
@@ -81,7 +81,7 @@ function getRoundWinner (roundNumber) {
       break;
   
     default:
-      return 'Tie';
+      return null;
   }
 
   switch (playerOneMove) {
@@ -90,7 +90,7 @@ function getRoundWinner (roundNumber) {
         return 'Player Two';
       } else if (playerTwoMove === 'scissors') {
         return 'Player One';
-      } else if (platerTwoMove === 'rock') {
+      } else if (playerTwoMove === 'rock') {
         if (playerOneValue === playerTwoValue) {
           return 'Tie';
         } else if (playerOneValue > playerTwoValue) {
@@ -106,7 +106,7 @@ function getRoundWinner (roundNumber) {
         return 'Player Two';
       } else if (playerTwoMove === 'rock') {
         return 'Player One';
-      } else if (platerTwoMove === 'paper') {
+      } else if (playerTwoMove === 'paper') {
         if (playerOneValue === playerTwoValue) {
           return 'Tie';
         } else if (playerOneValue > playerTwoValue) {
@@ -122,7 +122,7 @@ function getRoundWinner (roundNumber) {
         return 'Player Two';
       } else if (playerTwoMove === 'paper') {
         return 'Player One';
-      } else if (platerTwoMove === 'scissors') {
+      } else if (playerTwoMove === 'scissors') {
         if (playerOneValue === playerTwoValue) {
           return 'Tie';
         } else if (playerOneValue > playerTwoValue) {
@@ -134,7 +134,7 @@ function getRoundWinner (roundNumber) {
       break;
   
     default:
-      return 'error in determining round winner.';
+      return null;
   }
 }
 

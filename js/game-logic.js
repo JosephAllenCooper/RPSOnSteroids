@@ -163,3 +163,14 @@ function getGameWinner() {
     return 'Player Two';
   }
 }
+
+function setComputerMoves() {
+  const moves = ['rock', 'paper', 'scissors'];
+  const moveOneType = moves[Math.floor(Math.random() * 3)];
+  const moveTwoType = moves[Math.floor(Math.random() * 3)];
+  const moveThreeType = moves[Math.floor(Math.random() * 3)];
+  const moveOneValue = Math.floor(Math.random() * 96) + 1;
+  const moveTwoValue = Math.floor(Math.random() * (97 - moveOneValue)) + 1;
+  const moveThreeValue = 99 - moveOneValue - moveTwoValue;
+  setPlayerMoves('Player Two', moveOneType, moveOneValue, moveTwoType,moveTwoValue, moveThreeType, moveThreeValue);
+}
